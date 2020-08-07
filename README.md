@@ -1,9 +1,9 @@
 # Coronavirus and Respiratory Illness
-A project dedicated to understanding the effects of respiratory illness on COVID-19.
+A project dedicated to understanding the effects of respiratory illness due to COVID-19.
 
 ## Domain of Interest
 
-COVID-19 has altered the world immeasurably. Schools and many workforces have become virtual, travel has been restricted. Mask use has been mandated by the government in many areas in the United States. With no end in sight of coronavirus cases dissipating, our group stems to find out what factors may lead to higher death rates in COVID-19 cases.
+COVID-19 has altered the world immeasurably. Schools and many workforces have been shift to become digitized and travel has been restricted. Mask use has been mandated by the government in many areas in the United States. With no end in sight of coronavirus cases dissipating, our group stems to find out what factors may lead to higher death rates in COVID-19 cases.
 
 #### Related Data Driven Projects
 The following projects are related to this domain and have inspired us to conduct additional research.
@@ -19,11 +19,11 @@ uses John Hopkins COVID-19 data to chart the daily cases, as well as deaths caus
 
 This project aims to answer some of these following questions:
 
-- What is the prevalence of COVID-19 in contrast to asthma or smoking rates?
+- What is the prevalence of COVID-19 in contrast to chronic respiratory disease (Asthma,Chronic Bronchitis,etc)
 
-- Do populations with higher tobacco use have higher death rates?
+- Do populations with higher tobacco usage have higher death rates?
 
-- What gender is most affected by COVID-19?
+- What ethnicity is most affected by COVID-19?
 
 
 ## Finding Data

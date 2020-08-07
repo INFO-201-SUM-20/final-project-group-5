@@ -3,7 +3,7 @@ A project dedicated to understanding the effects of respiratory illness due to C
 
 ## Domain of Interest
 
-COVID-19 has altered the world immeasurably. Schools and many workforces have been shift to become digitized and travel has been restricted. Mask use has been mandated by the government in many areas in the United States. With no end in sight of coronavirus cases dissipating, our group stems to find out what factors may lead to higher death rates in COVID-19 cases.
+COVID-19 has altered the world immeasurably. Schools and many workforces have been shift to become digitized and travel has been restricted. Mask use has been mandated by the government in many areas in the United States. With no end in sight of coronavirus cases dissipating, our group stems to give a visual presentation of COVID-19 incidence rates, as well as explore the correlation between tobacco use and COVID-19 incidence.
 
 #### Related Data Driven Projects
 The following projects are related to this domain and have inspired us to conduct additional research.
@@ -17,13 +17,13 @@ uses John Hopkins COVID-19 data to chart the daily cases, as well as deaths caus
 
 #### Data Driven Questions
 
-This project aims to answer some of these following questions:
+This project aims to answer these following questions:
 
-- What is the prevalence of COVID-19 in contrast to chronic respiratory disease (Asthma,Chronic Bronchitis,etc)
+- Is there a correlation between COVID-19 incidence rate and **tabacco use** by state?
 
-- Do populations with higher tobacco usage have higher death rates?
+- Map COVID-19 **incidence** and **death rates** by state.
 
-- What ethnicity is most affected by COVID-19?
+- What **ethnicity** is most affected by COVID-19?
 
 
 ## Finding Data

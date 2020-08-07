@@ -3,7 +3,7 @@ A project dedicated to understanding the effects of respiratory illness on COVID
 
 ## Domain of Interest
 
-COVID-19 has altered the world immeasurably. Schools and many workforces have become virtual, travel has been restricted. Mask use has been mandated by the government in many areas in the United States. With no end in site of COVID-19 cases dissipating, our group stems to find out what factors may lead to higher death rates in COVID-19 cases.
+COVID-19 has altered the world immeasurably. Schools and many workforces have become virtual, travel has been restricted. Mask use has been mandated by the government in many areas in the United States. With no end in sight of coronavirus cases dissipating, our group stems to find out what factors may lead to higher death rates in COVID-19 cases.
 
 #### Related Data Driven Projects
 The following projects are related to this domain and have inspired us to conduct additional research.

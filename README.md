@@ -1,9 +1,10 @@
-# Coronavirus and Respiratory Illness
-A project dedicated to understanding the effects of respiratory illness due to COVID-19.
+#  COVID-19 and Respiratory Diseases: World Population Edition
+A project dedicated to understanding the effects of respiratory illness due to COVID-19 on human population.
 
 ## Domain of Interest
 
-COVID-19 has altered the world immeasurably. Schools and many workforces have been shift to become digitized and travel has been restricted. Mask use has been mandated by the government in many areas in the United States. With no end in sight of coronavirus cases dissipating, our group stems to give a visual presentation of COVID-19 incidence rates, as well as explore the correlation between tobacco use and COVID-19 incidence.
+COVID-19 has altered the world immeasurably. Schools and many workforces have been shift to become digitized and travel has been restricted. Mask use has been mandated by the government in many areas in the United States. With no end in sight of coronavirus cases dissipating, our group stems to give a visual presentation of COVID-19 incidence rates, as well as explore the correlation between tobacco use and COVID-19 incidence on difference ethnicity as a way
+to promote sources that promote equity.
 
 #### Related Data Driven Projects
 The following projects are related to this domain and have inspired us to conduct additional research.
@@ -19,11 +20,11 @@ uses John Hopkins COVID-19 data to chart the daily cases, as well as deaths caus
 
 This project aims to answer these following questions:
 
-- Is there a correlation between COVID-19 incidence rate and **tobacco use** by state? We want to find tobacco rates for U.S states and compare them with how many COVID-19 cases there are.
+- Is there a correlation between COVID-19 incidence rate and **tobacco use** by state? We want to find tobacco rates for U.S states and compare them with how many COVID-19 cases there are currently.
 
-- How does COVID-19 **incidence** and **death rates** vary by state. We want to explore which states have been most affected, and find explore possibilities why COVID-19 has been more prominent in those regions.
+- How does COVID-19 **incidence** and **death rates** vary by state(s)? We want to explore which states have been most affected, and find explore possibilities why COVID-19 has been more prominent in those regions.
 
-- What **ethnicity** is most affected by COVID-19? We want to compare how different races have caught COVID-19, recovered and or died.
+- What **ethnicity** is most affected by COVID-19? We want to compare how different ethnic groups have caught COVID-19, recovered and or died.
 
 
 ## Finding Data

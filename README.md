@@ -21,7 +21,7 @@ This project aims to answer these following questions:
 
 - Is there a correlation between COVID-19 incidence rate and **tobacco use** by state? We want to find tobacco rates for U.S states and compare them with how many COVID-19 cases there are.
 
-- How does COVID-19 **incidence** and **death rates** vary by state.
+- How does COVID-19 **incidence** and **death rates** vary by state. We want to explore which states have been most affected, and find explore possibilities why COVID-19 has been more prominent in those regions.
 
 - What **ethnicity** is most affected by COVID-19? We want to compare how different races have caught COVID-19, recovered and or died.
 

@@ -1,0 +1,60 @@
+---
+title: "COVID-19 in the United States"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r include = FALSE}
+
+timeseries <- read.csv('data/time_series_covid19_confirmed_US.csv', stringsAsFactors = 
+                     FALSE)
+
+source('./scripts/chart-1.R')
+```
+
+
+
+
+## Introduction
+
+COVID-19 has altered the world immeasurably. Schools and many workforces have been shift to become digitized and travel has been restricted. Mask use has been mandated by the government in many areas in the United States. With no end in sight of coronavirus cases dissipating, our group stems to give a visual presentation of COVID-19 incidence rates, as well as explore the correlation between tobacco use and COVID-19 incidence on difference ethnicity as a way to promote sources that promote equity.
+
+## Summary
+
+Summary Text goes here
+
+## Table
+
+Render your table and describe pertinent observations found in it
+
+
+### Coronavirus in the United States (Chart 1)
+
+This chart shows total COVID-19 cases across the United States, in the beginning of August, 2020. The map shows hotspots across the country where COVID-19 is more rampant.
+
+```{r echo = F}
+render_leaf_plot(timeseries)
+```
+
+### Chart2
+
+Chart 2 description
+
+```{r echo = F}
+
+```
+
+
+### Chart3
+
+Chart 3 description
+
+```{r echo = F}
+
+```
+
+

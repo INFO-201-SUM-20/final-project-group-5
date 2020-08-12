@@ -1,4 +1,4 @@
-#  COVID-19 and Respiratory Diseases: World Population Edition
+#  COVID-19 in the United States
 A project dedicated to understanding the effects of respiratory illness due to COVID-19 on human population.
 
 ## Domain of Interest

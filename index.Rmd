@@ -1,10 +1,11 @@
 ---
 title: "COVID-19 in the United States"
 output: html_document
+author: Scyler, Camden, Judy, Alexis
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, dev = 'pdf')
 ```
 
 
@@ -14,8 +15,8 @@ timeseries <- read.csv('data/time_series_covid19_confirmed_US.csv', stringsAsFac
                      FALSE)
 
 source('./scripts/chart-1.R')
+source('./scripts/chart-2.R')
 ```
-
 
 
 
@@ -27,26 +28,63 @@ COVID-19 has altered the world immeasurably. Schools and many workforces have be
 
 Summary Text goes here
 
+<br />
+
+
 ## Table
 
 Render your table and describe pertinent observations found in it
+
+<br />
 
 
 ### Coronavirus in the United States (Chart 1)
 
 This chart shows total COVID-19 cases across the United States, in the beginning of August, 2020. The map shows hotspots across the country where COVID-19 is more rampant.
 
-```{r echo = F}
+```{r echo = F, fig.width = 9}
 render_leaf_plot(timeseries)
 ```
 
-### Chart2
+<br />
 
-Chart 2 description
+### Coronavirus and United States Market Performance
 
-```{r echo = F}
+This grid of charts demonstrates how the U.S markets had been impacted by the coronavirus. As you can see during the initial outbreak of coronavirus, the markets plunged more than 30% in a matter of weeks. Then you can see the market rapidly recovery and hitting all time highs in the S&P.
+
+```{r echo = F, fig.width=9, fig.height=6}
+dow_data <- read.csv('data/dow-jones-data.csv', stringsAsFactors = FALSE)
+spy_data <- read.csv('data/S&P 500.csv', stringsAsFactors = FALSE)
+owid_covid_data <- read.csv('data/owid-covid-data.csv', stringsAsFactors = FALSE)
+
+
+covid_data <- owid_covid_data %>%
+  group_by(location) %>%
+  filter(location == 'United States') %>%
+  mutate(formatDate = as.Date(date))
+
+
+m_data <- dow_data %>% 
+  mutate(formatDate = as.Date(Date, format='%m/%d/%Y'))
+
+s_data <- spy_data %>% 
+  mutate(formatDate = as.Date(Date, )) %>%
+  mutate(spyClose = Close) %>%
+  select(formatDate, spyClose)
+
+
+df <- covid_data %>% inner_join(m_data, by = 'formatDate') %>%
+  inner_join(s_data, by = 'formatDate')
+
+
+
+render_chart2(df)
+
+
 
 ```
+
+<br />
 
 
 ### Chart3

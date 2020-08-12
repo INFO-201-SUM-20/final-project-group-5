@@ -13,10 +13,11 @@ render_leaf_plot <- function(df){
 
   leaf_plot <- leaflet(data = covid_data) %>%
     addProviderTiles('CartoDB.Positron') %>%
+    setView(lng = -122.3321, lat = 47.6062, zoom = 5) %>%
     addCircles(
       lat = ~Lat,
       lng = ~Long_,
-      radius = ~(X8.5.20 / 1000),
+      radius = ~X8.5.20,
       popup =  ~paste(Combined_Key, '<br/>', 'Total cases: ', X8.5.20),
       color = 'pink', fillOpacity = 0.7
     ) %>%

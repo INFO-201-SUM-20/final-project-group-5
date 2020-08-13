@@ -11,12 +11,12 @@ render_chart2 <- function(df){
   
 
   plot2 <- ggplotly(ggplot(df, ) +
-    geom_line(aes(x = formatDate, y = Close), colour="#f44336") + 
+    geom_line(aes(x = formatDate, y = Close), colour="#ff7900") + 
     xlab('US DOW JONES Performance'))
 
   
   plot3 <- ggplotly(ggplot(df, ) +
-    geom_line(aes(x = formatDate, y = spyClose), colour="#f44336") +
+    geom_line(aes(x = formatDate, y = spyClose), colour="#0082e9") +
     xlab('US S&P 500 Performance'))
   
   subplot(plot1, plot2, plot3, margin = 0.03, titleX = TRUE)

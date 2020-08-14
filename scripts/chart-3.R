@@ -1,6 +1,6 @@
 library(plotly)
 library(dplyr)
-mask_data<- read.csv('data/mask-use-by-county.csv')
+mask_data <- read.csv('data/mask-use-by-county.csv')
 
 #Create a new Dataset that contains top 10 counties
 mask_by_countries <- filter(mask_data, county
@@ -55,9 +55,10 @@ BuildChart <- function(mask_by_countries, county){
  
   
   #make chart using plotly
-  mask_chart <- plot_ly(mask_data, x = ~county, y = ~percentage(), type = 'bar', orientation = 'h', name = 'Los Angeles',
-                        marker = list(color = 'rgba(142, 56, 142, 0.6)',
-                                      line = list(color = 'rgba(142, 56, 142, 1.0',
+mask_chart <- plot_ly(mask_data, x = ~county, y = ~percentage(), type = 'bar', 
+                      orientation = 'h',
+                      marker = list(color = 'rgba(17, 132, 255, 0.6)',
+                               line = list(color = 'rgba(255, 180, 17, 1.0',
                                                   width = 1))) %>%
     
     layout(barmode = 'stack',

@@ -122,8 +122,9 @@ render_chart2(df)
 
 ### Mask Usage for Top 10 Counties in the United States
 
-Chart 3 description
+This is a bar chart that demonstrates the frequency of mask usages for the top 10 populous county in U.S.
 
-```{r echo = F}
-
+```{r echo = F, fig.widt = 9, fig.height = 14}
+data <- mask_by_countries %>%
+render_chart3(data)
 ```

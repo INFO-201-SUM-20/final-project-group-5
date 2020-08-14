@@ -1,46 +1,101 @@
+
+
+
 ---
 title: "COVID-19 in the United States"
 output: html_document
-author: Scyler, Camden, Judy, Alexis
+author: Camden & Judy
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, dev = 'pdf')
+knitr::opts_chunk$set(echo = TRUE, dev = "pdf")
 ```
 
 
 ```{r include = FALSE}
+library("dplyr")
+library("tidyr")
+library("knitr")
+library("kableExtra")
 
-timeseries <- read.csv('data/time_series_covid19_confirmed_US.csv', stringsAsFactors = 
-                     FALSE)
+timeseries <- read.csv("data/time_series_covid19_confirmed_US.csv",
+  stringsAsFactors =
+    FALSE
+)
+dow_data <- read.csv("data/dow-jones-data.csv", stringsAsFactors = FALSE)
+spy_data <- read.csv("data/S&P 500.csv", stringsAsFactors = FALSE)
+owid_covid_data <- read.csv("data/owid-covid-data.csv", stringsAsFactors = FALSE)
 
-source('./scripts/chart-1.R')
-source('./scripts/chart-2.R')
+covid_data <- owid_covid_data %>%
+  filter(location == "United States") %>%
+  mutate(Month = as.numeric(substr(date, 6, 7))) %>%
+  mutate(formatDate = as.Date(date))
+
+
+dow_data <- dow_data %>%
+  mutate(formatDate = as.Date(Date, format = "%m/%d/%Y")) %>%
+  mutate(dowClose = Close) %>%
+  select(formatDate, dowClose)
+
+spy_data <- spy_data %>%
+  mutate(formatDate = as.Date(Date)) %>%
+  mutate(spyClose = Close) %>%
+  select(formatDate, spyClose)
+
+source("scripts/summary-info.R")
+source("scripts/table-summary.R")
+source("scripts/chart-1.R")
+source("scripts/chart-2.R")
 ```
 
-
+<br/>
 
 ## Introduction
 
 COVID-19 has altered the world immeasurably. Schools and many workforces have been shift to become digitized and travel has been restricted. Mask use has been mandated by the government in many areas in the United States. With no end in sight of coronavirus cases dissipating, our group stems to give a visual presentation of COVID-19 incidence rates, as well as explore the correlation between tobacco use and COVID-19 incidence on difference ethnicity as a way to promote sources that promote equity.
 
+<br/>
+
 ## Summary
+```{r echo = F}
 
-Summary Text goes here
+info <- get_summary_info(covid_data, dow_data, spy_data)
+```
+
+The datasets we analyzed were taken from John Hopkins and Yahoo Finance. After combining these datasets, our data had `r info$numRows` observations  and `r info$numColumns` columns. 
+
+The coronavirus has reached **`r info$total_cases` cases** and **`r info$total_deaths`**  since it's inception in the United States. The worst day of COVID-19 had **`r info$most_deaths_in_a_day` deaths** in a single day. The day with the most cases had **`r info$most_cases_in_a_day`** cases. 
+
+Since the first COVID-19 case in the U.S, the DOW JONES index has reached a low of **`r info$lowest_dow_jones`** and a high of **`r info$highest_dow_jones`**. The S&P 500 has reached a high of **`r info$highest_spy`** and a low of **`r info$lowest_spy`**.
+
+The highest positive rate in a single day was **`r info$highest_positive_rate`** and the lowest tests per cases in a single day had reached **`r info$lowest_tests_per_case`**.
+
 
 <br />
 
 
-## Table
+## COVID cases in the U.S with Stock Data
 
-Render your table and describe pertinent observations found in it
+This table shows a timeseries of COVID-19 cases in the United States from December 31st, 2019 to August 10th, 2020 in a month grouping. 
+The table shows the total cases, deaths, and tests, in each month. The table also shows the average closing points of U.S market indices DOW JONES and S&P 500.
 
+We can easily see which month had the most deaths, which also correlated to the lowest point on DOW JONES. 
+
+The table shows the slow beginning of the coronavirus has esclates exponentially within months. You can also see the market indices crash during the early onset of COVID-19, but recovering after DOW JONES reaches a low of 18591.93.
+
+The table also shows how the number of tests being conducted each month is rapidly increasing, as the S&P 500 reaches near all time highs.
+
+
+```{r echo = F, fig.width=9}
+kable(get_summary_info_table(covid_data, dow_data, spy_data)) %>%
+  kable_styling("striped", full_width = T)
+```
 <br />
 
 
-### Coronavirus in the United States (Chart 1)
+### Coronavirus by counties in the United State
 
-This chart shows total COVID-19 cases across the United States, in the beginning of August, 2020. The map shows hotspots across the country where COVID-19 is more rampant.
+This chart shows total COVID-19 cases across the United States, in the beginning of August, 2020. The map shows hotspots across the country where COVID-19 is more rampant. The map also shows whether the state is democratic or republican.
 
 ```{r echo = F, fig.width = 9}
 render_leaf_plot(timeseries)
@@ -52,36 +107,14 @@ render_leaf_plot(timeseries)
 
 This grid of charts demonstrates how the U.S markets had been impacted by the coronavirus. As you can see during the initial outbreak of coronavirus, the markets plunged more than 30% in a matter of weeks. Then you can see the market rapidly recovery and hitting all time highs in the S&P.
 
-```{r echo = F, fig.width=9, fig.height=6}
-dow_data <- read.csv('data/dow-jones-data.csv', stringsAsFactors = FALSE)
-spy_data <- read.csv('data/S&P 500.csv', stringsAsFactors = FALSE)
-owid_covid_data <- read.csv('data/owid-covid-data.csv', stringsAsFactors = FALSE)
+```{r echo = F, fig.width=9, fig.height = 14}
 
-
-covid_data <- owid_covid_data %>%
-  group_by(location) %>%
-  filter(location == 'United States') %>%
-  mutate(formatDate = as.Date(date))
-
-
-m_data <- dow_data %>% 
-  mutate(formatDate = as.Date(Date, format='%m/%d/%Y'))
-
-s_data <- spy_data %>% 
-  mutate(formatDate = as.Date(Date, )) %>%
-  mutate(spyClose = Close) %>%
-  select(formatDate, spyClose)
-
-
-df <- covid_data %>% inner_join(m_data, by = 'formatDate') %>%
-  inner_join(s_data, by = 'formatDate')
-
+df <- covid_data %>%
+  inner_join(dow_data, by = "formatDate") %>%
+  inner_join(spy_data, by = "formatDate")
 
 
 render_chart2(df)
-
-
-
 ```
 
 <br />

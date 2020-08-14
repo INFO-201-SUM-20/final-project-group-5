@@ -5,8 +5,7 @@ The website is available [here](https://info-201-sum-20.github.io/final-project-
 
 ## Domain of Interest
 
-COVID-19 has altered the world immeasurably. Schools and many workforces have been shift to become digitized and travel has been restricted. Mask use has been mandated by the government in many areas in the United States. With no end in sight of coronavirus cases dissipating, our group stems to give a visual presentation of COVID-19 incidence rates, as well as explore the correlation between tobacco use and COVID-19 incidence on difference ethnicity as a way
-to promote sources that promote equity.
+COVID-19 has altered the world immeasurably. Schools and many workforces have been shift to become digitized and travel has been restricted. Mask use has been mandated by the government in many areas in the United States. With no end in sight of coronavirus cases dissipating, our group stems to give a visual presentation of COVID-19 incidence rates, as well as explore the correlation between the stock market and COVID-19 incidence. In addition to exploring mask usage with correlation to the number of cases that occurs in major counties.
 
 #### Related Data Driven Projects
 The following projects are related to this domain and have inspired us to conduct additional research.
@@ -28,7 +27,7 @@ This project aims to answer these following questions:
 
 - What was the worst day of COVID-19 in the United States?
 
-- What **ethnicity** is most affected by COVID-19? We want to compare how different ethnic groups have caught COVID-19, recovered and or died.
+- Does mask usage in different cities impact their number of COVID-19 cases?
 
 
 ## Finding Data

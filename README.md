@@ -1,5 +1,7 @@
 #  COVID-19 in the United States
-A project dedicated to understanding the effects of respiratory illness due to COVID-19 on human population.
+A project dedicated to understanding COVID-19 in the U.S.
+
+The website is available [here](https://info-201-sum-20.github.io/final-project-group-5/).
 
 ## Domain of Interest
 
@@ -20,15 +22,17 @@ uses John Hopkins COVID-19 data to chart the daily cases, as well as deaths caus
 
 This project aims to answer these following questions:
 
-- Is there a correlation between COVID-19 incidence rate and **tobacco use** by state? We want to find tobacco rates for U.S states and compare them with how many COVID-19 cases there are currently.
+- How has COVID-19 affected the U.S market?
 
-- How does COVID-19 **incidence** and **death rates** vary by state(s)? We want to explore which states have been most affected, and find explore possibilities why COVID-19 has been more prominent in those regions.
+- Does a state being democratic or republican have an affect the amount of their COVID-19 cases?
+
+- What was the worst day of COVID-19 in the United States?
 
 - What **ethnicity** is most affected by COVID-19? We want to compare how different ethnic groups have caught COVID-19, recovered and or died.
 
 
 ## Finding Data
-- [Tobacco Use by State](https://data.cdc.gov/Smoking-Tobacco-Use/2011-Tobacco-Use-Smoke-everyday-by-National-State-/dhij-ubz6) is created by the CDC and collected via cell phone respondents. The dataset features 56 observations and 7 columns. Using this data we can answer if states with higher tobacco use have higher rates of COVID-19 cases.
+- [Dow Jones & S&P 500 historical quotes](https://finance.yahoo.com/quote/%5EDJI/history/) is created by Yahoo Finance and and records the opening, average, and close of these market indices.
 
 - [Coronavirus data in the US](https://github.com/nytimes/covid-19-data/blob/master/us.csv) is created by the New York Times and contains 3 columns (date, cases, deaths) and 199 observations. We can use this data set to look at COVID-19 daily cases, deaths, and recoveries to answer. We can also see how COVID-19 cases vary by state.
 

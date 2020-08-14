@@ -37,18 +37,14 @@ render_leaf_plot <- function(df) {
   }
 
   m <- m %>% addPolygons(
-    fillColor = ~color,
+    fillColor = ~pal(density),
     weight = 2,
     opacity = 1,
     color = "white",
     dashArray = "3",
-    fillOpacity = 0.5
+    fillOpacity = 0.7
   )
 
-  m %>% addLegend(
-    pal = pal, values = ~density, opacity = 0.7, title = NULL,
-    position = "bottomright"
-  )
   m <- m %>%
     addCircles(
       data = covid_data,
@@ -62,10 +58,11 @@ render_leaf_plot <- function(df) {
     addLayersControl(
       overlayGroups = c("cases"),
       options = layersControlOptions(collapsed = FALSE)
-    )
+    ) %>%
+    addLegend(pal = pal, values = ~density, opacity = 0.7,
+               position = "bottomright", title = 'People per mile squared')
 
-
-  m <- m %>% addLegend("bottomright", colors = c("red", "blue"), labels = c("Democratic", "Republican"))
+?addLegend
 
   return(m)
 }

@@ -95,7 +95,7 @@ kable(get_summary_info_table(covid_data, dow_data, spy_data)) %>%
 
 ### Coronavirus by counties in the United State
 
-This chart shows total COVID-19 cases across the United States, in the beginning of August, 2020. The map shows hotspots across the country where COVID-19 is more rampant. The map also shows whether the state is democratic or republican.
+This chart shows total COVID-19 cases across the United States, in the beginning of August, 2020. The map shows hotspots across the country where COVID-19 is more rampant. The hotspots correspond to areas where the population density is much higher, while less dense areas have far less COVID-19 cases.
 
 ```{r echo = F, fig.width = 9}
 render_leaf_plot(timeseries)

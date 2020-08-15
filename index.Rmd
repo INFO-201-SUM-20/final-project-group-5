@@ -46,6 +46,7 @@ source("scripts/summary-info.R")
 source("scripts/table-summary.R")
 source("scripts/chart-1.R")
 source("scripts/chart-2.R")
+source("scripts/chart-3.R")
 ```
 
 <br/>
@@ -124,7 +125,6 @@ render_chart2(df)
 
 This is a bar chart that demonstrates the frequency of mask usages for the top 10 populous county in U.S. As we look at
 
-```{r echo = F,
-data <- mask_by_countries %>%
-render_chart3(data)
+```{r echo = F, message = FALSE}
+render_chart3()
 ```

@@ -121,9 +121,9 @@ render_chart2(df)
 <br />
 
 
-### Mask Usage for Top 10 Counties in the United States
+### Mask Usage for Top Five Counties in the United States
 
-This is a bar chart that demonstrates the frequency of mask usages for the top 5 populous county in U.S.
+This is a bar chart that demonstrates the frequency of mask usages for the top five populous county in the United States. Looking at this chart and comparing it to the cases in each state. You can see the correlation of mask usage and number of COVID-19 incidence.
 
 <<<<<<< HEAD
 ```{r echo = F, message = FALSE}

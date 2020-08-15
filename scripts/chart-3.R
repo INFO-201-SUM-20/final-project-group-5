@@ -1,7 +1,8 @@
 library(plotly)
 library(dplyr)
 
-mask_data <- read.csv('/data/mask-use-by-county.csv', stringsAsFactors = F)
+render_chart3 <- function(mask_data){
+ 
 
 codes <- c(34017, 
            48201, 
@@ -28,3 +29,7 @@ mask_chart <- plot_ly(mask_data, x = ~counties, y = ~ALWAYS, type = 'bar',
          title = "Mask Usages in Top 5 U.S Counties",
          xaxis = list(title = ""),
          yaxis = list(title = ""))
+
+return(mask_chart)
+
+}

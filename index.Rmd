@@ -17,6 +17,7 @@ library("dplyr")
 library("tidyr")
 library("knitr")
 library("kableExtra")
+library('formattable')
 
 timeseries <- read.csv("data/time_series_covid19_confirmed_US.csv",
   stringsAsFactors =
@@ -65,9 +66,9 @@ info <- get_summary_info(covid_data, dow_data, spy_data)
 
 The datasets we analyzed were taken from John Hopkins and Yahoo Finance. After combining these datasets, our data had `r info$numRows` observations  and `r info$numColumns` columns.
 
-The coronavirus has reached **`r info$total_cases` cases** and **`r info$total_deaths`**  since it's inception in the United States. The worst day of COVID-19 had **`r info$most_deaths_in_a_day` deaths** in a single day. The day with the most cases had **`r info$most_cases_in_a_day`** cases.
+The coronavirus has reached **`r comma(info$total_cases, digits = 0)` cases** and **`r comma(info$total_deaths, digits = 0)` deaths**  since it's inception in the United States. The worst day of COVID-19 had **`r info$most_deaths_in_a_day` deaths** in a single day. The most cases in a single day was **`r comma(info$most_cases_in_a_day, digits = 0)`** cases.
 
-Since the first COVID-19 case in the U.S, the DOW JONES index has reached a low of **`r info$lowest_dow_jones`** and a high of **`r info$highest_dow_jones`**. The S&P 500 has reached a high of **`r info$highest_spy`** and a low of **`r info$lowest_spy`**.
+Since the first COVID-19 case in the U.S, the DOW JONES index has reached a low of **`r comma(info$lowest_dow_jones, digits = 2)`** and a high of **`r comma(info$highest_dow_jones, digits = 2)`**. The S&P 500 has reached a high of **`r comma(info$highest_spy, digits = 2)`** and a low of **`r comma(info$lowest_spy, digits = 2)`**.
 
 The highest positive rate in a single day was **`r info$highest_positive_rate`** and the lowest tests per cases in a single day had reached **`r info$lowest_tests_per_case`**.
 
@@ -125,8 +126,9 @@ render_chart2(df)
 
 This is a bar chart that demonstrates the frequency of mask usages for the top five populous county in the United States. Looking at this chart and comparing it to the cases in each state. You can see the correlation of mask usage and number of COVID-19 incidence.
 
-<<<<<<< HEAD
-```{r echo = F, message = FALSE}
-render_chart3(mask_chart)
+```{r echo = F, message = FALSE, warning = FALSE, fig.width = 9}
+mask_data <- read.csv('data/mask-use-by-county.csv', stringsAsFactors = F)
+
+render_chart3(mask_data)
 
 ```

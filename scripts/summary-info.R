@@ -8,9 +8,9 @@ get_summary_info <- function(covid_df, dow_df, spy_df) {
 
   res <- list()
 
-  res$numColumns <- ncol(df)
+  res$num_columns <- ncol(df)
 
-  res$numRows <- nrow(df)
+  res$num_rows <- nrow(df)
 
   res$most_deaths_in_a_day <- df %>%
     filter(new_deaths == max(new_deaths, na.rm = TRUE)) %>%

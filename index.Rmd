@@ -17,7 +17,7 @@ library("dplyr")
 library("tidyr")
 library("knitr")
 library("kableExtra")
-library('formattable')
+library("formattable")
 
 timeseries <- read.csv("data/time_series_covid19_confirmed_US.csv",
   stringsAsFactors =
@@ -25,7 +25,7 @@ timeseries <- read.csv("data/time_series_covid19_confirmed_US.csv",
 )
 dow_data <- read.csv("data/dow-jones-data.csv", stringsAsFactors = FALSE)
 spy_data <- read.csv("data/S&P 500.csv", stringsAsFactors = FALSE)
-owid_covid_data <- read.csv("data/owid-covid-data.csv", stringsAsFactors = FALSE)
+owid_covid_data <- read.csv("data/owid-covid-data.csv", stringsAsFactors = F)
 
 covid_data <- owid_covid_data %>%
   filter(location == "United States") %>%
@@ -64,7 +64,7 @@ COVID-19 has altered the world immeasurably. Schools and many workforces have be
 info <- get_summary_info(covid_data, dow_data, spy_data)
 ```
 
-The datasets we analyzed were taken from John Hopkins and Yahoo Finance. After combining these datasets, our data had `r info$numRows` observations  and `r info$numColumns` columns.
+The datasets we analyzed were taken from John Hopkins and Yahoo Finance. After combining these datasets, our data had `r info$num_rows` observations  and `r info$num_columns` columns.
 
 The coronavirus has reached **`r comma(info$total_cases, digits = 0)` cases** and **`r comma(info$total_deaths, digits = 0)` deaths**  since it's inception in the United States. The worst day of COVID-19 had **`r info$most_deaths_in_a_day` deaths** in a single day. The most cases in a single day was **`r comma(info$most_cases_in_a_day, digits = 0)`** cases.
 
@@ -121,14 +121,12 @@ render_chart2(df)
 
 <br />
 
-
 ### Mask Usage for Top Five Counties in the United States
 
 This is a bar chart that demonstrates the frequency of mask usages for the top five populous county in the United States. Looking at this chart and comparing it to the cases in each state. You can see the correlation of mask usage and number of COVID-19 incidence.
 
 ```{r echo = F, message = FALSE, warning = FALSE, fig.width = 9}
-mask_data <- read.csv('data/mask-use-by-county.csv', stringsAsFactors = F)
+mask_data <- read.csv("data/mask-use-by-county.csv", stringsAsFactors = F)
 
 render_chart3(mask_data)
-
 ```

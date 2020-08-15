@@ -37,7 +37,7 @@ render_leaf_plot <- function(df) {
   }
 
   m <- m %>% addPolygons(
-    fillColor = ~pal(density),
+    fillColor = ~ pal(density),
     weight = 2,
     opacity = 1,
     color = "white",
@@ -59,10 +59,12 @@ render_leaf_plot <- function(df) {
       overlayGroups = c("cases"),
       options = layersControlOptions(collapsed = FALSE)
     ) %>%
-    addLegend(pal = pal, values = ~density, opacity = 0.7,
-               position = "bottomright", title = 'People per mile squared')
+    addLegend(
+      pal = pal, values = ~density, opacity = 0.7,
+      position = "bottomright", title = "People per mile squared"
+    )
 
-?addLegend
+  ?addLegend
 
   return(m)
 }

@@ -127,6 +127,6 @@ This is a bar chart that demonstrates the frequency of mask usages for the top f
 
 <<<<<<< HEAD
 ```{r echo = F, message = FALSE}
-render_chart3()
+render_chart3(mask_chart)
 
 ```

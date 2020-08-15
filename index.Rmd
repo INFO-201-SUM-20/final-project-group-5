@@ -125,6 +125,8 @@ render_chart2(df)
 
 This is a bar chart that demonstrates the frequency of mask usages for the top 10 populous county in U.S. As we look at
 
+<<<<<<< HEAD
 ```{r echo = F, message = FALSE}
 render_chart3()
+
 ```

@@ -2,11 +2,7 @@
 library("dplyr")
 library("tidyr")
 
-get_summary_info_table <- function(covid_df, dow_df, spy_df) {
-  df <- covid_data %>%
-    inner_join(dow_df, by = "formatDate") %>%
-    inner_join(spy_df, by = "formatDate")
-
+get_summary_info_table <- function(df) {
   summary_data <- df %>%
     mutate(Year = as.numeric(substr(date, 1, 4))) %>%
     mutate(Month = as.numeric(substr(date, 6, 7))) %>%

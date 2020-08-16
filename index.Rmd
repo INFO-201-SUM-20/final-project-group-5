@@ -20,28 +20,31 @@ library("kableExtra")
 library("formattable")
 
 timeseries <- read.csv("data/time_series_covid19_confirmed_US.csv",
-  stringsAsFactors =
-    FALSE
+  stringsAsFactors = F
 )
-dow_data <- read.csv("data/dow-jones-data.csv", stringsAsFactors = FALSE)
-spy_data <- read.csv("data/S&P 500.csv", stringsAsFactors = FALSE)
+dow_data <- read.csv("data/dow-jones-data.csv", stringsAsFactors = F)
+spy_data <- read.csv("data/S&P 500.csv", stringsAsFactors = F)
 owid_covid_data <- read.csv("data/owid-covid-data.csv", stringsAsFactors = F)
+mask_data <- read.csv("data/mask-use-by-county.csv", stringsAsFactors = F)
 
 covid_data <- owid_covid_data %>%
   filter(location == "United States") %>%
   mutate(Month = as.numeric(substr(date, 6, 7))) %>%
-  mutate(formatDate = as.Date(date))
-
+  mutate(Date = as.Date(date))
 
 dow_data <- dow_data %>%
-  mutate(formatDate = as.Date(Date, format = "%m/%d/%Y")) %>%
+  mutate(Date = as.Date(Date, format = "%m/%d/%Y")) %>%
   mutate(dowClose = Close) %>%
-  select(formatDate, dowClose)
+  select(Date, dowClose)
 
 spy_data <- spy_data %>%
-  mutate(formatDate = as.Date(Date)) %>%
+  mutate(Date = as.Date(Date)) %>%
   mutate(spyClose = Close) %>%
-  select(formatDate, spyClose)
+  select(Date, spyClose)
+
+df <- covid_data %>%
+  inner_join(dow_data, by = "Date") %>%
+  inner_join(spy_data, by = "Date")
 
 source("scripts/summary-info.R")
 source("scripts/table-summary.R")
@@ -54,42 +57,77 @@ source("scripts/chart-3.R")
 
 ## Introduction
 
-COVID-19 has altered the world immeasurably. Schools and many workforces have been shift to become digitized and travel has been restricted. Mask use has been mandated by the government in many areas in the United States. With no end in sight of coronavirus cases dissipating, our group stems to give a visual presentation of COVID-19 incidence rates, as well as explore the correlation between COVID-19 and population densities, the U.S markets, and the percentage of mask usage by the top counties in the country.
+COVID-19 has altered the world immeasurably. Schools and many workforces have 
+been shift to become digitized and travel has been restricted. Mask use has 
+been mandated by the government in many areas in the United States. With no 
+end in sight of coronavirus cases dissipating, our group stems to give a 
+visual presentation of COVID-19 incidence rates, as well as explore the 
+correlation between COVID-19 and population densities, the U.S markets, 
+and the percentage of mask usage by the top counties in the country.
 
 <br/>
 
 ## Summary
 ```{r echo = F}
 
-info <- get_summary_info(covid_data, dow_data, spy_data)
+info <- get_summary_info(df)
 ```
 
-The datasets we analyzed were taken from John Hopkins and Yahoo Finance. After combining these datasets, our data had `r info$num_rows` observations  and `r info$num_columns` columns.
+The datasets we analyzed were taken from John Hopkins and Yahoo Finance. 
+After combining these datasets, our data had `r info$num_rows` observations  
+and `r info$num_columns` columns.
 
-The coronavirus has reached **`r comma(info$total_cases, digits = 0)` cases** and **`r comma(info$total_deaths, digits = 0)` deaths**  since it's inception in the United States. The worst day of COVID-19 had **`r info$most_deaths_in_a_day` deaths** in a single day. The most cases in a single day was **`r comma(info$most_cases_in_a_day, digits = 0)`** cases.
+The coronavirus has reached **`r comma(info$total_cases, digits = 0)` cases** 
+and **`r comma(info$total_deaths, digits = 0)` deaths**  since it's inception 
+in the United States. The worst day of COVID-19 had 
+**`r info$most_deaths_in_a_day` deaths** in a single day. The most cases in 
+a single day was **`r comma(info$most_cases_in_a_day, digits = 0)`** cases.
 
-Since the first COVID-19 case in the U.S, the DOW JONES index has reached a low of **`r comma(info$lowest_dow_jones, digits = 2)`** and a high of **`r comma(info$highest_dow_jones, digits = 2)`**. The S&P 500 has reached a high of **`r comma(info$highest_spy, digits = 2)`** and a low of **`r comma(info$lowest_spy, digits = 2)`**.
+Since the first COVID-19 case in the U.S, the DOW JONES index has reached a 
+low of **`r comma(info$lowest_dow_jones, digits = 2)`** and a high of 
+**`r comma(info$highest_dow_jones, digits = 2)`**. The S&P 500 has reached 
+a high of **`r comma(info$highest_spy, digits = 2)`** and a low 
+of **`r comma(info$lowest_spy, digits = 2)`**.
 
-The highest positive rate in a single day was **`r info$highest_positive_rate`** and the lowest tests per cases in a single day had reached **`r info$lowest_tests_per_case`**.
+The highest positive rate in a single day was **`r info$highest_positive_rate`** 
+and the lowest tests per cases in a single day had 
+reached **`r info$lowest_tests_per_case`**.
 
 
 <br />
 
 
-## COVID data in the U.S Combined With Stock Data
+## Monthly COVID & Market data in the U.S
 
-This table shows a timeseries of COVID-19 cases in the United States from December 31st, 2019 to August 10th, 2020 in a month grouping.
-The table shows the total cases, deaths, and tests, in each month. The table also shows the average closing points of U.S market indices DOW JONES and S&P 500.
+This table shows a timeseries of COVID-19 cases in the United States from 
+December 31st, 2019 to August 10th, 2020 in a month grouping.
+The table shows the total cases, deaths, and tests, in each month. The table 
+also shows the average closing points of U.S market indices DOW JONES and S&P 500.
 
-We can easily see which month had the most deaths, which also correlated to the lowest point on DOW JONES.
+We can easily see which month had the most deaths, which also correlated to 
+the lowest point on DOW JONES.
 
-The table shows the slow beginning of the coronavirus has esclates exponentially within months. You can also see the market indices crash during the early onset of COVID-19, but recovering after DOW JONES reaches a low of 18591.93.
+The table shows the slow beginning of the coronavirus has esclates 
+exponentially within months. You can also see the market indices crash 
+during the early onset of COVID-19, but recovering after DOW JONES reaches 
+a low of 18591.93.
 
-The table also shows how the number of tests being conducted each month is rapidly increasing, as the S&P 500 reaches near all time highs.
+The table also shows how the number of tests being conducted each month 
+is rapidly increasing, as the S&P 500 reaches near all time highs.
 
 
 ```{r echo = F, fig.width=9}
-kable(get_summary_info_table(covid_data, dow_data, spy_data)) %>%
+kable(get_summary_info_table(df), col.names = c(
+  "Year",
+  "Month",
+  "Total Cases",
+  "Total Deaths",
+  "DOW Average",
+  "S&P Average",
+  "New Tests",
+  "Positive Rate",
+  "Tests Per Case"
+)) %>%
   kable_styling("striped", full_width = T)
 ```
 <br />
@@ -97,7 +135,10 @@ kable(get_summary_info_table(covid_data, dow_data, spy_data)) %>%
 
 ### Coronavirus by Counties in the United States
 
-This chart shows total COVID-19 cases across the United States, in the beginning of August, 2020. The map shows hotspots across the country where COVID-19 is more rampant. The hotspots correspond to areas where the population density is much higher, while less dense areas have far less COVID-19 cases.
+This chart shows total COVID-19 cases across the United States, in the beginning
+of August, 2020. The map shows hotspots across the country where COVID-19 is 
+more rampant. The hotspots correspond to areas where the population density 
+is much higher, while less dense areas have far less COVID-19 cases.
 
 ```{r echo = F, fig.width = 9}
 render_leaf_plot(timeseries)
@@ -107,15 +148,12 @@ render_leaf_plot(timeseries)
 
 ### Coronavirus and United States Market Performance
 
-This grid of charts demonstrates how the U.S markets had been impacted by the coronavirus. As you can see during the initial outbreak of coronavirus, the markets plunged more than 30% in a matter of weeks. Then you can see the market rapidly recovery and hitting all time highs in the S&P.
+This grid of charts demonstrates how the U.S markets had been impacted by the 
+coronavirus. As you can see during the initial outbreak of coronavirus, the 
+markets plunged more than 30% in a matter of weeks. Then you can see the market 
+rapidly recovery and hitting all time highs in the S&P.
 
 ```{r echo = F, fig.width=9, fig.height = 14}
-
-df <- covid_data %>%
-  inner_join(dow_data, by = "formatDate") %>%
-  inner_join(spy_data, by = "formatDate")
-
-
 render_chart2(df)
 ```
 
@@ -123,10 +161,11 @@ render_chart2(df)
 
 ### Mask Usage for Top Five Counties in the United States
 
-This is a bar chart that demonstrates the frequency of mask usages for the top five populous county in the United States. Looking at this chart and comparing it to the cases in each state. You can see the correlation of mask usage and number of COVID-19 incidence.
+This is a bar chart that demonstrates the frequency of mask usages for the top 
+five populous county in the United States. Looking at this chart and comparing 
+it to the cases in each state. You can see the correlation of mask usage and 
+number of COVID-19 incidence.
 
 ```{r echo = F, message = FALSE, warning = FALSE, fig.width = 9}
-mask_data <- read.csv("data/mask-use-by-county.csv", stringsAsFactors = F)
-
 render_chart3(mask_data)
 ```

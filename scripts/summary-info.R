@@ -1,10 +1,7 @@
 library("dplyr")
 
 
-get_summary_info <- function(covid_df, dow_df, spy_df) {
-  df <- covid_df %>%
-    inner_join(dow_df, by = "formatDate") %>%
-    inner_join(spy_df, by = "formatDate")
+get_summary_info <- function(df) {
 
   res <- list()
 

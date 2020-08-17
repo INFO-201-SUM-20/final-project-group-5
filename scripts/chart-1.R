@@ -3,13 +3,12 @@ library("ggplot2")
 library("leaflet")
 library("shiny")
 library("geojsonio")
-
-
+library("formattable")
 
 render_leaf_plot <- function(df) {
   covid_data <- df %>%
     select(Province_State, Lat, Long_, X8.5.20, Combined_Key) %>%
-    filter(X8.5.20 > 100)
+    filter(X8.5.20 > 100 & is.numeric(X8.5.20))
 
   states <- geojsonio::geojson_read("data/us-states.json", what = "sp")
   m <- leaflet(states) %>%
@@ -21,20 +20,7 @@ render_leaf_plot <- function(df) {
     ))
 
   bins <- c(0, 10, 20, 50, 100, 200, 500, 1000, Inf)
-  pal <- colorBin("YlOrRd", domain = states$density, bins = bins)
-
-  labels <- sprintf(
-    "<strong>%s</strong><br/>%g people / mi<sup>2</sup>",
-    states$name, states$density
-  ) %>% lapply(htmltools::HTML)
-
-  create_color <- function(color) {
-    if (color == "red") {
-      return("red")
-    } else {
-      return("blue")
-    }
-  }
+  pal <- colorBin("Blues", domain = states$density, bins = bins)
 
   m <- m %>% addPolygons(
     fillColor = ~ pal(density),
@@ -42,8 +28,7 @@ render_leaf_plot <- function(df) {
     opacity = 1,
     color = "white",
     dashArray = "3",
-    fillOpacity = 0.7
-  )
+    fillOpacity = 0.7)
 
   m <- m %>%
     addCircles(
@@ -51,9 +36,10 @@ render_leaf_plot <- function(df) {
       lat = ~Lat,
       lng = ~Long_,
       radius = ~X8.5.20,
-      popup = ~ paste(Combined_Key, "<br/>", "Total cases: ", X8.5.20),
-      color = "#000", fillOpacity = 0.9,
-      group = "cases"
+      popup = ~ paste(Combined_Key, "<br/>", "Total cases: ", comma(X8.5.20, digits = 0)),
+      color = "#a94442", fillOpacity = 0.9,
+      group = "cases",
+      stroke = FALSE
     ) %>%
     addLayersControl(
       overlayGroups = c("cases"),
@@ -63,8 +49,6 @@ render_leaf_plot <- function(df) {
       pal = pal, values = ~density, opacity = 0.7,
       position = "bottomright", title = "People per mile squared"
     )
-
-  ?addLegend
 
   return(m)
 }

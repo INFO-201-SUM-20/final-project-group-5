@@ -1,7 +1,10 @@
 #  COVID-19 in the United States
 A project dedicated to understanding COVID-19 in the U.S.
 
-The website is available [here](https://info-201-sum-20.github.io/final-project-group-5/).
+The markdown file is available [here](https://info-201-sum-20.github.io/final-project-group-5/).
+
+The interactive website is available [here](https://fouchtc.shinyapps.io/US-COVID-IMPACTS/).
+
 
 ## Domain of Interest
 

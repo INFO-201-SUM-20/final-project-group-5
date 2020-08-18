@@ -8,10 +8,15 @@ html{
 
 h2{
   font-weight: 900;
+  margin: 3rem 0;
 }
 
 h3{
   font-weight: bold;
+}
+
+img{
+  display: block;
 }
 
 #leafMap{
@@ -21,5 +26,79 @@ h3{
 }
 
 .home__img{
+  display: block;
   width: 100%;
+  margin: 3rem 0 3rem 0;
+  
+}
+
+.home__team-img{
+  display: 'block';
+  width: 100%;
+  margin: auto;
+  margin-bottom: 1rem;
+
+}
+
+
+.home__team-name{
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+p{
+  font-size: 1.8rem;
+  line-height: 1.75;
+}
+
+.home__li{
+  padding: 1rem 0;  
+  font-size: 1.8rem;
+}
+
+#mapDowPlot, #mapSpyPlot{
+  height: auto !important;
+}
+
+.panel-row-wrapper{
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.map__panel-p{
+  margin: 0;
+  margin-right: 1rem;
+  width: 150px;
+  font-size: 1.6rem;
+}
+
+.panel-row-wrapper .shiny-text-output{
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.market__div{
+  padding-top: 60px;
+}
+
+.market h3{
+  margin: 3rem 0;
+  padding-top: 2rem;
+}
+
+
+
+.market__legend-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.market__legend-color{
+  height: 40px;
+  width: 40px;
+  background: red;
 }

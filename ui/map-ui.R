@@ -70,9 +70,9 @@ interactive_map <- fluidPage(
                 )),
                 tags$br(),
                 sliderInput("integer", "Days since first COVID-19 Case:",
-                            min = 0, 
-                            max = 200,
-                            value = 0
+                            min = 1, 
+                            max = 190,
+                            value = 1
                 ),
                 tags$br(),
 

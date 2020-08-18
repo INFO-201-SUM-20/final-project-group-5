@@ -1,0 +1,12 @@
+name: US-COVID-IMPACTS
+title: US-COVID-IMPACTS
+username:
+account: fouchtc
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2680093
+bundleId: 3531011
+url: https://fouchtc.shinyapps.io/US-COVID-IMPACTS/
+when: 1597777419.10829
+asMultiple: FALSE
+asStatic: FALSE

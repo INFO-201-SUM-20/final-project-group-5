@@ -5,7 +5,9 @@ library("shiny")
 library("geojsonio")
 library("formattable")
 
-render_leaf_plot <- function(df) {
+render_leaf_plot <- function(df, name) {
+  
+
   covid_data <- df %>%
     select(Province_State, Lat, Long_, X8.5.20, Combined_Key) %>%
     filter(X8.5.20 > 100 & is.numeric(X8.5.20))
@@ -13,6 +15,7 @@ render_leaf_plot <- function(df) {
   states <- geojsonio::geojson_read("data/us-states.json", what = "sp")
   m <- leaflet(states) %>%
     setView(-96, 37.8, 4) %>%
+    addTiles() %>%
     addTiles("MapBox", options = providerTileOptions(
       id = "mapbox.light",
       group = "stateTiles",
@@ -28,15 +31,16 @@ render_leaf_plot <- function(df) {
     opacity = 1,
     color = "white",
     dashArray = "3",
-    fillOpacity = 0.7)
+    fillOpacity = 0.9)
 
   m <- m %>%
     addCircles(
       data = covid_data,
       lat = ~Lat,
       lng = ~Long_,
-      radius = ~X8.5.20,
-      popup = ~ paste(Combined_Key, "<br/>", "Total cases: ", comma(X8.5.20, digits = 0)),
+      radius = ~ df[[name]],
+      popup = ~ paste(Combined_Key, "<br/>", "Total cases: ", 
+                      comma(X8.5.20, digits = 0)),
       color = "#a94442", fillOpacity = 0.9,
       group = "cases",
       stroke = FALSE

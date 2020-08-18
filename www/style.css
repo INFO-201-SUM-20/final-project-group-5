@@ -1,0 +1,25 @@
+.panel{
+  padding: 1rem;
+}
+
+html{
+  overflow-y: auto !important;
+}
+
+h2{
+  font-weight: 900;
+}
+
+h3{
+  font-weight: bold;
+}
+
+#leafMap{
+  margin: -20px -30px 0 -30px !important;
+  width: calc(100vw + 60px) !important;
+  height: calc(100vh - 50px);
+}
+
+.home__img{
+  width: 100%;
+}

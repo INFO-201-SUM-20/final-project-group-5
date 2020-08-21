@@ -42,14 +42,12 @@ server <- function(input, output){
   print('Inside server')
   
 
-  
-  # Functions for Mask Usage 
   output$maskUse <- renderPlotly( {
     
     
-  # Sorts data depending on widget
+    # Sorts data depending on widget
     
-    if (mask_bar_graph = "COUNTYFP") {
+    if (input$maskRadioInput == "COUNTYFP") {
       mask_data <- mask_data %>% filter(COUNTYFP == mask_bar_graph)
     } else {
       mask_data <- 
@@ -79,15 +77,12 @@ server <- function(input, output){
     
     # Renders plot
     
-    plot_ly(
+    mask_plot <- plot_ly(
       mask_data, 
       x = ~mask_data$COUNTYFP, 
       y = ~mask_data$ALWAYS, 
       type = 'bar', name = 'Country') %>%
-      
-      # Sets layout of plot
-      
-      layout(
+       layout(
         title="Mask Usage by County",
         yaxis = list(title = 'Usage Frequency'), 
         barmode = 'group',
@@ -95,7 +90,11 @@ server <- function(input, output){
         autosize = F,
         height= 500,
         margin = m)
+    
+    return(mask_plot)
   } )
+  
+
   
   
   # Function for market UI

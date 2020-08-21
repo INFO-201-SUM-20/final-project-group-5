@@ -8,8 +8,12 @@ mask_ui <- fluidPage(
   p(),
   titlePanel ('Top Counties'),
   sidebarLayout(
-  sidebarPanel('mask_bar_graph', 'Code', choices = union(c="COUNTYFP", unique(mask_data$COUNTYFP)))
-  ),
+  sidebarPanel('mask_bar_graph', 'Code', 
+               radioButtons(
+                 "maskRadioInput",
+                 label="County Picker",
+               choices = list('Greene' = 05055, 'Santa Cruz' = 04923))),
   mainPanel(
-  plotlyOutput("maskUse")  
+    plotlyOutput("maskUse")  
+  )
   ))

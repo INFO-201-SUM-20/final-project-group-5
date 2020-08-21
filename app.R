@@ -4,7 +4,6 @@ library('dplyr')
 source('myui.R')
 source('myserver.R')
 source('scripts/chart-1.R')
-source('scripts/chart-3.R')
 
 #Run shiny app
 

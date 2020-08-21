@@ -38,7 +38,7 @@ home <- fluidPage(
            tags$div(class = 'col-xs-4',
                     
                     tags$div(class = 'home__team-div',
-                             tags$img(class = 'home__team-img', src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRHHii9tJKycQ6wYLpqpH7YsumqpWgC0WdpcQ&usqp=CAU', desc = 'Profile Image'),
+                             tags$img(class = 'home__team-img', src = 'Judy.jpg', desc = 'Profile Image'),
                              
                              tags$p(class ='home__team-name', 'Judy Nguyen')
                              
@@ -73,7 +73,7 @@ deaths
     tags$li(class = 'home__li', 'Has coronavirus cases had an impact on the U.S stock market?'),
     tags$li(class = 'home__li', 'Has coronavirus deaths had an impact on the U.S stock market?'),
     tags$li(class = 'home__li', 'What was the worst day of COVID-19?'),
-    tags$li(class = 'home__li', 'How are the top counties using masks'),
+    tags$li(class = 'home__li', 'How often are top U.S counties using masks?'),
   )
   )
 )

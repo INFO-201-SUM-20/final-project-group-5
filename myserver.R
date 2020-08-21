@@ -47,10 +47,10 @@ server <- function(input, output){
   output$maskUse <- renderPlotly( {
     
     
-    # Sorts data depending on widget
+  # Sorts data depending on widget
     
-    if (input$mask_bar_graph != "COUNTYFP") {
-      mask_data <- mask_data %>% filter(COUNTYFP == input$mask_bar_graph)
+    if (mask_bar_graph = "COUNTYFP") {
+      mask_data <- mask_data %>% filter(COUNTYFP == mask_bar_graph)
     } else {
       mask_data <- 
         group_by(mask_data, ALWAYS)

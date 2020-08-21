@@ -1,10 +1,15 @@
-chart3_ui <- fluidPage(
+mask_ui <- fluidPage(
   tags$head(
     tags$link(rel = "stylesheet", type = "text/css", href = "bootstrap.css")
   ),
 
-  h2('Judys chart :)'),
+  h2('Mask Usage in the United States'),
   
-  p('Put your content here!')
-  
-)
+  p(),
+  titlePanel ('Top Counties'),
+  sidebarLayout(
+  sidebarPanel('mask_bar_graph', 'Code', choices = union(c="COUNTYFP", unique(mask_data$COUNTYFP)))
+  ),
+  mainPanel(
+  plotlyOutput("maskUse")  
+  ))

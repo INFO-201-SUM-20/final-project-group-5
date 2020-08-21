@@ -43,9 +43,59 @@ server <- function(input, output){
   
 
   
-  # Functions for chart 3 (Judys stuff, dont worry about stuff below)
-  
-  
+  # Functions for Mask Usage 
+  output$maskUse <- renderPlotly( {
+    
+    
+    # Sorts data depending on widget
+    
+    if (input$mask_bar_graph != "COUNTYFP") {
+      mask_data <- mask_data %>% filter(COUNTYFP == input$mask_bar_graph)
+    } else {
+      mask_data <- 
+        group_by(mask_data, ALWAYS)
+    }
+    
+    # Formats and arranges data for plot
+    
+    mask_data <- mask_data%>% 
+      summarize(count = n()) %>%
+      filter(count > 1) %>%
+      arrange(desc(count))
+    
+    # Names columns
+    
+    colnames(mask_data) <- c("COUNTYFP", "ALWAYS")
+    
+    # Sets up plot dimensions
+    
+    m = list(
+      l = 100,
+      r = 0,
+      b = 300,
+      t = 50,
+      pad = 0
+    )
+    
+    # Renders plot
+    
+    plot_ly(
+      mask_data, 
+      x = ~mask_data$COUNTYFP, 
+      y = ~mask_data$ALWAYS, 
+      type = 'bar', name = 'Country') %>%
+      
+      # Sets layout of plot
+      
+      layout(
+        title="Mask Usage by County",
+        yaxis = list(title = 'Usage Frequency'), 
+        barmode = 'group',
+        xaxis = list(categoryarray = count, categoryorder = "array", title = "US County"),
+        autosize = F,
+        height= 500,
+        margin = m)
+  } )
   
   
   # Function for market UI

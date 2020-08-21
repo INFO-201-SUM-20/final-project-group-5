@@ -9,7 +9,10 @@ ui <- fluidPage(navbarPage(
     tabPanel('Home', home),
     tabPanel('Interactive map', interactive_map),
     tabPanel('Markets', market_ui),
-    tabPanel('Chart 3', chart3_ui),
+    tabPanel('Mask Usage', chart3_ui),
+      sidebarLayout(
+      sidebarPanel(
+      radioButtons('Code', 'Code', choices = unique(mask_data$COUNTYFP)))),
     tabPanel('Summary', summary_ui)
     
   ),     

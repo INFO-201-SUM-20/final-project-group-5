@@ -63,7 +63,7 @@ server <- function(input, output){
     
     # Names columns
     
-    colnames(mask_data) <- c("COUNTYFP", "ALWAYS")
+    colnames(mask_data) <- c("COUNTYFP", "ALWAYS",)
     
     # Sets up plot dimensions
     

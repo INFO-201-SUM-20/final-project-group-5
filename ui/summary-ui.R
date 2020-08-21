@@ -20,7 +20,11 @@ summary_ui <- fluidPage(
 
   h2('Patterns'),
   
-  p('Looking at the bar chart, we can see that the most poplous counties in the 
-    User')
+  p('Based on the survey responses requested by the New York Times, we can see
+  from the top and bottom five counties in the United States; the mask usage frequency have 
+  drastically shifted. From the most populous county selected:King to the least populated county 
+  Green, we can see a decline of 30% in residents always using a mask 
+  within 6 feet distrance from another individual. This is also reflects on the number of cases 
+  to the corresponding states.
     )
   )

@@ -20,7 +20,7 @@ render_chart3 <- function(mask_data) {
 
   top <- data.frame(codes, counties)
 
-  mask_data <- mask_data %>%
+  mask_data <<- mask_data %>%
     filter(COUNTYFP %in% codes) %>%
     left_join(top, by = c("COUNTYFP" = "codes"))
 

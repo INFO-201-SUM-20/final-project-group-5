@@ -33,15 +33,15 @@ img{
   display: block;
   width: 100%;
   margin: 3rem 0 3rem 0;
-  
 }
 
 .home__team-img{
   display: 'block';
+  height: 200px;
   width: 100%;
   margin: auto;
   margin-bottom: 1rem;
-
+  object-fit:cover;
 }
 
 

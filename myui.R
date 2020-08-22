@@ -7,7 +7,7 @@ source("scripts/chart-3.R")
 
 
 ui <- fluidPage(navbarPage(
-  "USCV",
+  "US Stocks & COVID",
   tabPanel("Home", home),
   tabPanel("Interactive Map", interactive_map),
   tabPanel("Markets", market_ui),

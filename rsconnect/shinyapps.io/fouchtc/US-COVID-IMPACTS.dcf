@@ -5,8 +5,8 @@ account: fouchtc
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 2680093
-bundleId: 3543711
+bundleId: 3543737
 url: https://fouchtc.shinyapps.io/US-COVID-IMPACTS/
-when: 1598056981.23604
+when: 1598057497.2657
 asMultiple: FALSE
 asStatic: FALSE

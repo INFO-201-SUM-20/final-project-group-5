@@ -36,8 +36,8 @@ img{
 }
 
 .home__team-img{
-  display: 'block';
-  height: 200px;
+  display: block;
+  height: 270px;
   width: 100%;
   margin: auto;
   margin-bottom: 1rem;

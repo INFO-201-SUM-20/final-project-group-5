@@ -24,11 +24,10 @@ server <- function(input, output) {
   }
 
 
+  # Mask Bar Graph
   output$maskUse <- renderPlotly({
 
-
     # Sorts data depending on widget
-
     if (input$maskRadioInput == "COUNTYFP") {
       mask_data <- mask_data %>% filter(COUNTYFP == mask_bar_graph)
     } else {
@@ -83,9 +82,9 @@ server <- function(input, output) {
   })
 
 
-
-
   # Function for market UI
+  
+  # Renders a dow jones line graph
   output$marketPlot <- renderPlotly({
     ggplotly(ggplot(df, ) +
       geom_line(aes(x = Date, y = dowClose, color = "Dow Jones")) +
@@ -93,6 +92,7 @@ server <- function(input, output) {
       labs(color = "Legend"))
   })
 
+  # Renders a s&p 500 line graph
   output$spyGraph <- renderPlotly({
     ggplotly(ggplot(df) +
       geom_line(aes(x = Date, y = spyClose, color = "S&P 500")) +
@@ -100,6 +100,7 @@ server <- function(input, output) {
       labs(color = "Legend"))
   })
 
+  # Renders a covid plot
   output$covidPlot <- renderPlotly({
     val <- input$marketRadioInput
 
@@ -120,6 +121,7 @@ server <- function(input, output) {
       labs(color = "Legend"))
   })
 
+  # Renders a plot combining market & covid data
   output$combinedPlot <- renderPlotly({
     c_plot <- ggplot(df) +
       xlab("U.S COVID-19 and Market Data") +
@@ -194,7 +196,7 @@ server <- function(input, output) {
     return(ggplotly(c_plot))
   })
 
-
+  # Renders a line graph of covid data
   output$combinedCovid <- renderPlotly({
     print(input$checkboxInput)
     vals <- input$checkboxInput
@@ -241,6 +243,7 @@ server <- function(input, output) {
     return(ggplotly(p))
   })
 
+  # Renders plot of Dow jones and S&P 500
   output$combinedMarket <- renderPlotly({
     val <- input$marketRadioInput
 

@@ -9,7 +9,7 @@ source("scripts/chart-3.R")
 ui <- fluidPage(navbarPage(
   "USCV",
   tabPanel("Home", home),
-  tabPanel("Interactive map", interactive_map),
+  tabPanel("Interactive Map", interactive_map),
   tabPanel("Markets", market_ui),
   tabPanel("Mask Usage", mask_ui),
   tabPanel("Summary", summary_ui)
